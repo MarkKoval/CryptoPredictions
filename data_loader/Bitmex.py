@@ -72,7 +72,7 @@ class BitmexDataset:
                 data = self.bitmex_client.Trade.Trade_getBucketed(symbol=symbol, binSize=kline_size, count=self.batch_size,
                                                              startTime=new_time).result()[0]
                 temp_df = pd.DataFrame(data)
-                data_df = data_df.append(temp_df)
+                data_df = pd.concat([data_df, temp_df], ignore_index=True)
         # data_df.set_index('Date', inplace=True)
         data_df = data_df.rename({'timestamp':'Date'}, axis=1)
         data = preprocess(data_df, self.cfg)
@@ -88,7 +88,6 @@ class BitmexDataset:
     def get_dataset(self):
         dataset = self.get_all_bitmex(self.symbol, self.bin, save=True)
         return dataset
-
 
 
 

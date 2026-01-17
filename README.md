@@ -53,7 +53,7 @@ To get started as quickly as possible, follow the instructions in this section. 
 
 ### Dependencies  
 Make sure you have the following dependencies installed before proceeding:  
-- Python 3.7+ distribution
+- Python 3.10+ distribution
 - pip >= 21.3.1 
 
 ### Virtualenv  
@@ -74,6 +74,29 @@ Furthermore, you just have to install all the packages you need:
 ```bash  
 pip install -r requirements.txt  
 ```  
+
+### Trading-style Dashboard (Streamlit)
+Launch the interactive trading dashboard that visualizes local datasets in `./data`:
+
+```bash
+streamlit run apps/trading_dashboard.py
+```
+
+Use the sidebar to pick a symbol, interval, and model, then generate a forecast directly from the UI.
+
+### Telegram Bot Predictions
+Run the Telegram bot to generate model predictions on demand:
+
+```bash
+export TELEGRAM_BOT_TOKEN=your_token_here
+python apps/telegram_bot.py
+```
+
+Then in Telegram:
+```
+/datasets
+/predict ETHUSD 1d random_forest
+```
 Before moving forward, you need to install Hydra and know its basic functions to run different modules and APIs.  
 hydra is A framework for elegantly configuring complex applications with hierarchical structure.
 For more information about Hydra, read their official page [documentation](https://hydra.cc/).
@@ -163,7 +186,6 @@ To gain a better understanding of the models, metrics, and validation method use
 * Ahmad Nosratbakhsh
 
 <img src="https://user-images.githubusercontent.com/45646480/233836824-13a268e7-9464-46df-95bd-1ee8631519a8.jpg" data-canonical-src="https://user-images.githubusercontent.com/45646480/233836824-13a268e7-9464-46df-95bd-1ee8631519a8.jpg" width="540" />
-
 
 
 
